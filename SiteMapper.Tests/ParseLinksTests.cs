@@ -1,9 +1,6 @@
-using System;
-using Xunit;
-using SiteMapper;
 using SiteMapper.Core;
 using SiteMapper.Core.Models;
-using System.ComponentModel.DataAnnotations;
+using Xunit;
 
 namespace SiteMapper.Tests
 {

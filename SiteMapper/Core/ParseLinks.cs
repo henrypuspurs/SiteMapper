@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace SiteMapper.Core
 {
@@ -20,7 +21,7 @@ namespace SiteMapper.Core
             Parser();
         }
 
-        private IEnumerable<IPage> Parser()
+        private void Parser()
         {
             IEnumerable<IPage> tempList;
             tempList = Webpage.ToList();
@@ -32,7 +33,6 @@ namespace SiteMapper.Core
                 AddToPageLists(MatchCollectionToStringList(matches), Webpage, InvalidList);
                 page.Checked = true;
             }
-            return Webpage;
         }
 
         private void AddToPageLists(List<string> rawLinks, List<IPage> rootPage, List<IPage> invalidPage)
@@ -41,7 +41,7 @@ namespace SiteMapper.Core
             {
                 var processedLink = new ConvertToLink(link, SourcePage).FullProcess();
                 Console.WriteLine($"{processedLink.Url}");
-                if (processedLink.Valid && processedLink.LinkType == LinkType.File && processedLink.LinkSource == LinkSource.Internal)
+                if (processedLink.Valid && processedLink.LinkType == LinkType.Page && processedLink.LinkSource == LinkSource.Internal)
                 {
                     var validPage = new Page(processedLink.Url) { Checked = false };
                     rootPage.Add(validPage);
@@ -51,6 +51,7 @@ namespace SiteMapper.Core
                     var invalid = new Page(processedLink.Url) { Checked = false };
                     invalidPage.Add(invalid);
                 }
+                Thread.Sleep(1000);
             }
         }
 

@@ -1,9 +1,8 @@
-﻿using SiteMapper.Core.Models;
-using System.Collections.Generic;
-using System.Net;
-using System.Linq;
-using MoreLinq;
+﻿using MoreLinq;
+using SiteMapper.Core.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace SiteMapper.Core

@@ -1,8 +1,4 @@
-﻿using MoreLinq;
-using SiteMapper.Core.Models;
-using System;
-using System.Linq;
-using System.Runtime.InteropServices;
+﻿using SiteMapper.Core.Models;
 using System.Text.RegularExpressions;
 
 namespace SiteMapper.Core
@@ -53,11 +49,11 @@ namespace SiteMapper.Core
             {
                 link = StripForwardslashLeadAndTail(link);
                 fullUrl = Origin + link;
-                return CreateLinkFromFullAddress(fullUrl, LinkSource.External);
+                return CreateLinkFromFullAddress(fullUrl, LinkSource.Internal);
             }
             else
             {
-                return new Link { Url = link, Valid = false };
+                return new Link { Url = link, Valid = false, LinkSource = LinkSource.Internal };
             }
         }
 

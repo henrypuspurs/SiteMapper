@@ -8,7 +8,7 @@ namespace SiteMapper
         static void Main(string[] args)
         {
             MapSite mapSite = new MapSite();
-            mapSite.Start("http://www.waterworldglasgow.com/");
+            mapSite.Start("http://www.enteryoursitehere.com/");
         }
     }
 }
